@@ -10,8 +10,11 @@
         <meta name="description" content="{{applicationDescription}}">
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
-        <link rel="alternate icon" href="{{basePath}}{{faviconAlternate}}" type="image/x-icon">
-        <link rel="icon" href="{{basePath}}{{favicon}}" type="{{faviconType}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{basePath}}apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{basePath}}favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{basePath}}favicon-16x16.png">
+        <link rel="manifest" href="{{basePath}}site.webmanifest">
+        <link rel="icon" href="{{basePath}}favicon.ico" type="image/x-icon">
         <script nonce="{{nonce}}">
             let loadedApp;
 
@@ -55,7 +58,7 @@
         <div class="container content"></div>
         <footer>
             <p class="credit small">&copy; 2025
-            <a href="https://www.espocrm.com" title="Powered by EspoCRM" rel="noopener" target="_blank">EspoCRM</a></p>
+            <a href="https://evertec.ao" title="Powered by Evertec" rel="noopener" target="_blank">Evertec</a></p>
         </footer>
     </body>
 </html>
