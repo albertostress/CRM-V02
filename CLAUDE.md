@@ -2,6 +2,15 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Change Log
+
+### 2025-08-26 00:10:54
+- **Updated watermark to "© 2025 EVERTEC CRM — Todos os direitos reservados"**
+  - Modified: `client/custom/res/css/custom.css` - Updated CSS to show new watermark text
+  - Modified: `client/custom/lib/custom-footer.js` - Updated JS to replace with new text
+  - Verified: `custom/Espo/Custom/Resources/metadata/app/client.json` - Already configured correctly
+  - Note: Upgrade-safe customization (no core files modified)
+
 ## Project Overview
 
 EspoCRM is a free, open-source CRM platform with a PHP backend (REST API) and JavaScript frontend (single-page application). It uses a modular architecture with metadata-driven configuration.
