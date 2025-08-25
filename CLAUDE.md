@@ -4,6 +4,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Change Log
 
+### 2025-08-26 01:02:06
+- **Fixed footer replacement to use textContent instead of innerHTML**
+  - Modified: `client/custom/lib/custom-footer.js` - Changed from innerHTML to textContent to preserve DOM structure
+  - Verified: `custom/Espo/Custom/Resources/metadata/app/client.json` - Configuration correct
+  - Note: Container not running during cache clear - will be cleared on next deployment
+  - Commands to run after deploy:
+    ```bash
+    docker exec espocrm rm -rf /var/www/html/data/cache/*
+    docker exec espocrm php /var/www/html/rebuild.php
+    docker exec espocrm php /var/www/html/clear_cache.php
+    docker restart espocrm
+    ```
+
 ### 2025-08-26 00:10:54
 - **Updated watermark to "© 2025 EVERTEC CRM — Todos os direitos reservados"**
   - Modified: `client/custom/res/css/custom.css` - Updated CSS to show new watermark text

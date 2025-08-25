@@ -1,0 +1,18 @@
+{
+    "cssList": [
+        "__APPEND__",
+        "client/custom/res/css/custom.css"
+    ],
+    "scriptList": [
+        "__APPEND__",
+        "client/custom/lib/custom-footer.js"
+    ],
+    "developerModeScriptList": [
+        "__APPEND__",
+        "client/custom/lib/custom-footer.js"
+    ],
+    "developerModeCssList": [
+        "__APPEND__",
+        "client/custom/res/css/custom.css"
+    ]
+}
