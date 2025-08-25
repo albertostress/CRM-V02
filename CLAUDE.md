@@ -6,6 +6,48 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 EspoCRM is a free, open-source CRM platform with a PHP backend (REST API) and JavaScript frontend (single-page application). It uses a modular architecture with metadata-driven configuration.
 
+## Branding Override Evertec
+
+This instance has been customized with Evertec branding:
+
+- **Footer override**: `custom/Espo/Custom/Resources/templates/site/footer.tpl`
+- **Translations override**: `custom/Espo/Custom/Resources/i18n/en_US/Global.json` and `pt_BR/Global.json`
+- **Config patch**: `deployment/scripts/start.sh` forces `'outboundEmailFromName' => 'Evertec'`
+- **JavaScript override**: `client/custom/lib/custom-footer.js` - aggressive footer replacement
+- **CSS override**: `client/custom/res/css/custom.css` - visual branding
+
+### Como limpar cache e validar
+
+1. **Dentro do container:**
+   ```bash
+   rm -rf /var/www/html/data/cache/*
+   php /var/www/html/clear_cache.php || true
+   ```
+
+2. **Reiniciar o container:**
+   ```bash
+   docker restart espocrm
+   ```
+
+3. **Aplicar branding completo:**
+   ```bash
+   docker exec espocrm bash /deployment/scripts/apply-evertec-complete.sh
+   ```
+
+4. **Verificar status:**
+   ```bash
+   docker exec espocrm bash /deployment/scripts/verify-watermark.sh
+   ```
+
+5. **Testar no browser:**
+   - Rodapé deve exibir `© 2025 Evertec`
+   - No Admin > Email Settings, o From Name aparece como `Evertec`
+   - UI mostra "Evertec CRM" no topo
+   - Console do browser: digite `evertecStatus()` para ver status do JS
+
+### Observação
+Os overrides em `custom/...` são carregados automaticamente pelo EspoCRM e sobrevivem a upgrades. A customização é aplicada em múltiplas camadas para garantir permanência.
+
 ## Common Development Commands
 
 ### Build Commands

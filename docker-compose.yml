@@ -45,6 +45,10 @@ services:
       - ../files/espocrm-data:/var/www/html
       - ../files/espocrm-custom:/var/www/html/custom
       - ../files/espocrm-uploads:/var/www/html/data/upload
+      - ./deployment/scripts:/deployment/scripts:ro
+      - ./client/custom:/client/custom:ro
+      - ./custom:/custom-host:ro
+    command: ["/bin/bash", "/deployment/scripts/start.sh"]
     networks:
       - dokploy-network
     restart: always
