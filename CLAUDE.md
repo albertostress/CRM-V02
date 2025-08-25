@@ -4,6 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Change Log
 
+### 2025-08-26 01:15:00
+- **Replaced About page with custom branding "Kwame Oil & Gas CRM"**
+  - Created: `custom/Espo/Custom/Resources/metadata/clientDefs/About.json` - Metadata to use custom view
+  - Created: `client/custom/src/views/about.js` - Custom view definition
+  - Created: `client/custom/res/templates/about.tpl` - Custom HTML template with company branding
+  - Note: Upgrade-safe customization using EspoCRM's metadata override system
+  - Commands to run after deploy:
+    ```bash
+    docker exec espocrm rm -rf /var/www/html/data/cache/*
+    docker exec espocrm php /var/www/html/rebuild.php
+    ```
+
 ### 2025-08-26 01:02:06
 - **Fixed footer replacement to use textContent instead of innerHTML**
   - Modified: `client/custom/lib/custom-footer.js` - Changed from innerHTML to textContent to preserve DOM structure
