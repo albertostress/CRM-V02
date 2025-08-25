@@ -29,3 +29,34 @@
 client/css/espo/*
 client/lib/*
 client/modules/crm/lib/*
+
+# Dokploy Deployment
+.env
+.env.local
+.env.production
+*.backup
+*.sql
+*.sql.gz
+*.tar.gz
+/backups/
+/deployment/backups/
+
+# Docker volumes (when testing locally)
+/files/
+/docker-data/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
