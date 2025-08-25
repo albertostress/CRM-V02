@@ -1,0 +1,129 @@
+version: "3.8"
+
+services:
+  espocrm-db:
+    image: mariadb:latest
+    container_name: espocrm-db
+    environment:
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${DB_NAME:-espocrm}
+      MARIADB_USER: ${DB_USER:-espocrm}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ../files/espocrm-db:/var/lib/mysql
+    networks:
+      - dokploy-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 20s
+      start_period: 10s
+      timeout: 10s
+      retries: 3
+
+  espocrm:
+    image: espocrm/espocrm:latest
+    container_name: espocrm
+    environment:
+      ESPOCRM_DATABASE_PLATFORM: Mysql
+      ESPOCRM_DATABASE_HOST: espocrm-db
+      ESPOCRM_DATABASE_USER: ${DB_USER:-espocrm}
+      ESPOCRM_DATABASE_PASSWORD: ${DB_PASSWORD}
+      ESPOCRM_DATABASE_NAME: ${DB_NAME:-espocrm}
+      ESPOCRM_ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ESPOCRM_ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      ESPOCRM_SITE_URL: "https://${DOMAIN}"
+      # Optional configurations
+      ESPOCRM_LANGUAGE: ${LANGUAGE:-en_US}
+      ESPOCRM_TIME_ZONE: ${TIMEZONE:-UTC}
+      ESPOCRM_DEFAULT_CURRENCY: ${CURRENCY:-USD}
+      # Performance settings
+      ESPOCRM_CONFIG_JOBS_MAX_PORTION: ${JOBS_MAX_PORTION:-15}
+      ESPOCRM_CONFIG_JOBS_RUN_IN_PARALLEL: ${JOBS_PARALLEL:-true}
+      ESPOCRM_CONFIG_JOBS_POOL_CONCURRENCY_NUMBER: ${JOBS_CONCURRENCY:-4}
+    volumes:
+      - ../files/espocrm-data:/var/www/html
+      - ../files/espocrm-custom:/var/www/html/custom
+      - ../files/espocrm-uploads:/var/www/html/data/upload
+    networks:
+      - dokploy-network
+    restart: always
+    depends_on:
+      espocrm-db:
+        condition: service_healthy
+    expose:
+      - 80
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.espocrm.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.espocrm.entrypoints=websecure"
+      - "traefik.http.routers.espocrm.tls=true"
+      - "traefik.http.routers.espocrm.tls.certResolver=letsencrypt"
+      - "traefik.http.services.espocrm.loadbalancer.server.port=80"
+      # Redirect HTTP to HTTPS
+      - "traefik.http.routers.espocrm-http.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.espocrm-http.entrypoints=web"
+      - "traefik.http.routers.espocrm-http.middlewares=redirect-to-https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.permanent=true"
+
+  espocrm-daemon:
+    image: espocrm/espocrm:latest
+    container_name: espocrm-daemon
+    volumes:
+      - ../files/espocrm-data:/var/www/html
+      - ../files/espocrm-custom:/var/www/html/custom
+      - ../files/espocrm-uploads:/var/www/html/data/upload
+    networks:
+      - dokploy-network
+    restart: always
+    depends_on:
+      - espocrm
+    entrypoint: docker-daemon.sh
+
+  espocrm-websocket:
+    image: espocrm/espocrm:latest
+    container_name: espocrm-websocket
+    environment:
+      ESPOCRM_CONFIG_USE_WEB_SOCKET: "true"
+      ESPOCRM_CONFIG_WEB_SOCKET_URL: "wss://${DOMAIN}/ws"
+      ESPOCRM_CONFIG_WEB_SOCKET_ZERO_M_Q_SUBSCRIBER_DSN: "tcp://*:7777"
+      ESPOCRM_CONFIG_WEB_SOCKET_ZERO_M_Q_SUBMISSION_DSN: "tcp://espocrm-websocket:7777"
+    volumes:
+      - ../files/espocrm-data:/var/www/html
+      - ../files/espocrm-custom:/var/www/html/custom
+    networks:
+      - dokploy-network
+    restart: always
+    depends_on:
+      - espocrm
+    entrypoint: docker-websocket.sh
+    expose:
+      - 8080
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.espocrm-ws.rule=Host(`${DOMAIN}`) && PathPrefix(`/ws`)"
+      - "traefik.http.routers.espocrm-ws.entrypoints=websecure"
+      - "traefik.http.routers.espocrm-ws.tls=true"
+      - "traefik.http.routers.espocrm-ws.tls.certResolver=letsencrypt"
+      - "traefik.http.services.espocrm-ws.loadbalancer.server.port=8080"
+
+  # Optional: Redis for caching and sessions
+  espocrm-redis:
+    image: redis:7-alpine
+    container_name: espocrm-redis
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      - ../files/espocrm-redis:/data
+    networks:
+      - dokploy-network
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+
+networks:
+  dokploy-network:
+    external: true

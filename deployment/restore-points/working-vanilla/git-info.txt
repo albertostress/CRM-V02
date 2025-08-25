@@ -1,0 +1,18 @@
+Restore Point: working-vanilla
+Date: Mon Aug 25 23:51:29 CEST 2025
+Branch: main
+Commit: 5853ed35f8d568d8a199e850ca72a97c84dccef4
+Commit Message: fix: Rollback to working configuration
+
+- Reverted docker-compose.yml to vanilla configuration
+- Removed custom start command that was causing issues
+- Added diagnose-404.sh for routing problems
+- Added fix-404.sh to fix Traefik routing
+- Added rollback-to-working.sh to reset to basic setup
+
+This ensures EspoCRM starts properly without customizations.
+Branding can be applied after confirming the base system works.
+
+🤖 Generated with Claude Code
+
+Co-Authored-By: Claude <noreply@anthropic.com>
