@@ -45,17 +45,6 @@ services:
       - ../files/espocrm-data:/var/www/html
       - ../files/espocrm-custom:/var/www/html/custom
       - ../files/espocrm-uploads:/var/www/html/data/upload
-      - ./deployment/scripts:/deployment/scripts:ro
-      - ./client/custom:/client/custom:ro
-      - ./custom:/custom-host:ro
-    # Temporarily disabled - uncomment after first successful start
-    # command: ["/bin/bash", "/deployment/scripts/start.sh"]
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/api/v1/App/health", "||", "exit", "1"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
-      start_period: 60s
     networks:
       - dokploy-network
     restart: always
