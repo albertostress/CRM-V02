@@ -4,6 +4,12 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Change Log
 
+### 2025-08-26 15:41:41 CEST
+- Added custom CSS override to hide "Official Extensions" section from Admin UI
+- Created `client/custom/res/css/custom.css` with targeted CSS rule
+- Created `client/custom/autoload.json` to ensure CSS is properly loaded
+- Implementation uses EspoCRM best practices for customization (client/custom directory)
+
 ### 2025-08-26 02:45:00
 - **Core files edited directly for EVERTEC branding**
   - Modified: `html/main.html` - Changed title to "EVERTEC CRM", added custom CSS/JS links, replaced footer
