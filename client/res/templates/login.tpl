@@ -89,4 +89,4 @@
     </div>
     </div>
 </div>
-<footer>{{{footer}}}</footer>
+<footer><p class="credit small">© 2025 EVERTEC CRM — Todos os direitos reservados</p></footer>

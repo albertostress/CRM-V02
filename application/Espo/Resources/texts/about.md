@@ -1,15 +1,31 @@
-## EspoCRM – Open Source CRM application
+# EVERTEC CRM
 
-www.espocrm.com
+## Enterprise Customer Relationship Management System
 
-Copyright © 2014-2025 EspoCRM: Yurii Kuznietsov, Taras Machyshyn, Oleksii Avramenko.
+**Version**: Enterprise Edition  
+**Company**: Evertec Corporation  
+**License**: Commercial License
 
-EspoCRM is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+### About EVERTEC CRM
 
-EspoCRM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+EVERTEC CRM is a comprehensive customer relationship management platform designed to streamline business operations and enhance customer interactions.
 
-You should have received a copy of the GNU Affero General Public License along with EspoCRM. If not, see https://www.gnu.org/licenses/.
+### Key Features
 
-The interactive user interfaces in modified source and object code versions of this program must display Appropriate Legal Notices, as required under Section 5 of the GNU Affero General Public License version 3.
+- **Sales Management** - Track opportunities, leads, and complete sales pipeline
+- **Customer Service** - Manage support tickets and customer inquiries  
+- **Marketing Automation** - Create and track marketing campaigns
+- **Analytics & Reports** - Real-time dashboards and business intelligence
+- **Integration** - Connect with third-party applications and services
 
-In accordance with Section 7(b) of the GNU Affero General Public License version 3, these Appropriate Legal Notices must retain the display of the "EspoCRM" word.
+### Technical Support
+
+For technical support and assistance:
+- Email: support@evertec.com
+- Phone: 1-800-EVERTEC
+- Portal: https://support.evertec.com
+
+---
+
+© 2025 Evertec Corporation. All rights reserved.  
+EVERTEC CRM® is a registered trademark of Evertec Corporation.
