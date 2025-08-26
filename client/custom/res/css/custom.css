@@ -3,6 +3,15 @@ a[href*="#About"], [data-name="About"] {
     display: none !important;
 }
 
+/* Hide Official Extensions section in Admin */
+.panel[data-name="OfficialExtensions"],
+.panel-heading:has(+ .panel-body #official-extensions),
+#official-extensions,
+.admin-content .panel:has(.panel-body > div:contains("Official Extensions")) {
+    display: none !important;
+    visibility: hidden !important;
+}
+
 /* Hide all EspoCRM references */
 .credit:not(:empty),
 .credit.small:not(:empty),
