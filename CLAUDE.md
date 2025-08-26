@@ -4,6 +4,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Change Log
 
+### 2025-08-26 02:45:00
+- **Core files edited directly for EVERTEC branding**
+  - Modified: `html/main.html` - Changed title to "EVERTEC CRM", added custom CSS/JS links, replaced footer
+  - Backup: `html/main.html.bak` - Original file preserved
+  - Updated: `client/custom/res/css/custom.css` - Hide About menu, remove EspoCRM references
+  - Updated: `client/custom/lib/custom-footer.js` - Remove About links, replace text dynamically
+  - Note: **NOT upgrade-safe** - Core files modified directly for immediate branding
+  - Result: Complete EVERTEC CRM branding without external scripts
+
 ### 2025-08-26 01:15:00
 - **Replaced About page with custom branding "Kwame Oil & Gas CRM"**
   - Created: `custom/Espo/Custom/Resources/metadata/clientDefs/About.json` - Metadata to use custom view
