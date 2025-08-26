@@ -19,6 +19,19 @@ div.panel:has(h4:contains("Extensions")),
     display: none !important;
 }
 
+/* Hide all espocrm.com links */
+a[href*="espocrm.com"],
+a[href*="docs.espocrm.com"],
+a[href*="forum.espocrm.com"],
+a[href*="blog.espocrm.com"],
+a[href*="extensions.espocrm.com"],
+.documentation-link,
+.help-link,
+[data-action="showDocumentation"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
 /* Esconde completamente o About do menu */
 a[href*="#About"],
 [data-name="about"],

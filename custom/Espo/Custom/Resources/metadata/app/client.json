@@ -8,14 +8,16 @@
         "client/custom/lib/custom-footer.js",
         "client/custom/lib/custom-branding.js",
         "client/custom/lib/footer-override.js",
-        "client/custom/lib/hide-extensions.js"
+        "client/custom/lib/hide-extensions.js",
+        "client/custom/lib/remove-espocrm-links.js"
     ],
     "developerModeScriptList": [
         "__APPEND__",
         "client/custom/lib/custom-footer.js",
         "client/custom/lib/custom-branding.js",
         "client/custom/lib/footer-override.js",
-        "client/custom/lib/hide-extensions.js"
+        "client/custom/lib/hide-extensions.js",
+        "client/custom/lib/remove-espocrm-links.js"
     ],
     "developerModeCssList": [
         "__APPEND__",
