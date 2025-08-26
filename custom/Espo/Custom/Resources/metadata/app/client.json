@@ -5,11 +5,13 @@
     ],
     "scriptList": [
         "__APPEND__",
-        "client/custom/lib/custom-footer.js"
+        "client/custom/lib/custom-footer.js",
+        "client/custom/lib/custom-branding.js"
     ],
     "developerModeScriptList": [
         "__APPEND__",
-        "client/custom/lib/custom-footer.js"
+        "client/custom/lib/custom-footer.js",
+        "client/custom/lib/custom-branding.js"
     ],
     "developerModeCssList": [
         "__APPEND__",

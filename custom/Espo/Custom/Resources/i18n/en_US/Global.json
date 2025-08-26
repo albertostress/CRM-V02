@@ -1,6 +1,11 @@
 {
-  "Global": {
-    "brandName": "Evertec",
-    "appName": "Evertec CRM"
-  }
+    "appName": "EVERTEC CRM",
+    "footer": "© 2025 EVERTEC CRM — All rights reserved",
+    "labels": {
+        "About": "About EVERTEC",
+        "Administration": "Admin Panel"
+    },
+    "messages": {
+        "loginInfo": "Welcome to EVERTEC CRM System"
+    }
 }
