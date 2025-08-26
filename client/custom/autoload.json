@@ -1,4 +1,10 @@
 {
+  "js": [
+    "custom/lib/custom-footer.js",
+    "custom/lib/custom-branding.js",
+    "custom/lib/remove-espocrm-links.js",
+    "custom/lib/hide-extensions.js"
+  ],
   "css": [
     "custom/res/css/custom.css"
   ]

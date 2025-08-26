@@ -1,46 +1,6 @@
-/* ==================================
-   EVERTEC CRM - Core Override CSS
-   ================================== */
-
 /* EVERTEC custom overrides */
-/* Hide Official Extensions section in Admin page */
-#admin .page-header + .row .col-sm-4,
-#admin .extensions-panel,
-.admin-content .extensions-container,
-.admin-page div[data-name="extensions"],
-div.panel:has(h4:contains("Extensions")),
-.list-container:has(a[href*="extension"]) {
+a[href*="#About"], [data-name="About"] {
     display: none !important;
-}
-
-/* Hide the entire right column if it contains extensions content */
-.admin-page .col-md-4:has(.panel-heading:contains("Official Extensions")),
-.admin-page .col-sm-4:has(.panel-heading:contains("Official Extensions")) {
-    display: none !important;
-}
-
-/* Hide all espocrm.com links */
-a[href*="espocrm.com"],
-a[href*="docs.espocrm.com"],
-a[href*="forum.espocrm.com"],
-a[href*="blog.espocrm.com"],
-a[href*="extensions.espocrm.com"],
-.documentation-link,
-.help-link,
-[data-action="showDocumentation"] {
-    display: none !important;
-    visibility: hidden !important;
-}
-
-/* Esconde completamente o About do menu */
-a[href*="#About"],
-[data-name="about"],
-.menu-item-about,
-.navbar-nav a[href="#About"],
-li[data-name="about"] {
-    display: none !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
 }
 
 /* Hide all EspoCRM references */

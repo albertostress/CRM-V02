@@ -1,0 +1,24 @@
+/* EVERTEC CRM - Custom Styles */
+
+/* Remover ícones externos do login */
+.panel-body a[href*="espocrm.com"] {
+    display: none !important;
+}
+
+/* Footer customizado */
+.footer, .credit, .copyright {
+    text-align: center;
+    padding: 10px 0;
+    color: #666;
+}
+
+/* Esconder Extensions em qualquer lugar */
+a[href="#Admin/extensions"],
+li[data-name="extensions"],
+.admin-panel-item[data-name="extensions"],
+.list-group-item[href="#Admin/extensions"],
+[data-action="extensions"],
+.extensions-panel,
+.extensions-container {
+    display: none !important;
+}
