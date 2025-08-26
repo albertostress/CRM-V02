@@ -3,7 +3,19 @@
    ================================== */
 
 /* EVERTEC custom overrides */
-#admin .page-header + .row .col-sm-4 {
+/* Hide Official Extensions section in Admin page */
+#admin .page-header + .row .col-sm-4,
+#admin .extensions-panel,
+.admin-content .extensions-container,
+.admin-page div[data-name="extensions"],
+div.panel:has(h4:contains("Extensions")),
+.list-container:has(a[href*="extension"]) {
+    display: none !important;
+}
+
+/* Hide the entire right column if it contains extensions content */
+.admin-page .col-md-4:has(.panel-heading:contains("Official Extensions")),
+.admin-page .col-sm-4:has(.panel-heading:contains("Official Extensions")) {
     display: none !important;
 }
 

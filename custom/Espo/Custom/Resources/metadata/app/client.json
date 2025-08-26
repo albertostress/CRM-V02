@@ -7,13 +7,15 @@
         "__APPEND__",
         "client/custom/lib/custom-footer.js",
         "client/custom/lib/custom-branding.js",
-        "client/custom/lib/footer-override.js"
+        "client/custom/lib/footer-override.js",
+        "client/custom/lib/hide-extensions.js"
     ],
     "developerModeScriptList": [
         "__APPEND__",
         "client/custom/lib/custom-footer.js",
         "client/custom/lib/custom-branding.js",
-        "client/custom/lib/footer-override.js"
+        "client/custom/lib/footer-override.js",
+        "client/custom/lib/hide-extensions.js"
     ],
     "developerModeCssList": [
         "__APPEND__",
