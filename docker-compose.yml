@@ -42,9 +42,30 @@ services:
       ESPOCRM_CONFIG_JOBS_RUN_IN_PARALLEL: ${JOBS_PARALLEL:-true}
       ESPOCRM_CONFIG_JOBS_POOL_CONCURRENCY_NUMBER: ${JOBS_CONCURRENCY:-4}
     volumes:
+      # Persistent data volumes
       - ../files/espocrm-data:/var/www/html
-      - ../files/espocrm-custom:/var/www/html/custom
       - ../files/espocrm-uploads:/var/www/html/data/upload
+      
+      # EVERTEC CRM Branding Overrides - Mounted from Git repository
+      # Frontend customizations (CSS, JS, autoload)
+      - ./client/custom:/var/www/html/client/custom:ro
+      
+      # Core template overrides
+      - ./client/res/templates/site/footer.tpl:/var/www/html/client/res/templates/site/footer.tpl:ro
+      - ./client/res/templates/login.tpl:/var/www/html/client/res/templates/login.tpl:ro
+      
+      # About page content
+      - ./application/Espo/Resources/texts/about.md:/var/www/html/application/Espo/Resources/texts/about.md:ro
+      
+      # Installer branding
+      - ./install/core/tpl/footer.tpl:/var/www/html/install/core/tpl/footer.tpl:ro
+      - ./install/core/tpl/finish.tpl:/var/www/html/install/core/tpl/finish.tpl:ro
+      
+      # Main HTML (title, meta tags)
+      - ./html/main.html:/var/www/html/html/main.html:ro
+      
+      # Custom metadata and configurations
+      - ./custom/Espo/Custom:/var/www/html/custom/Espo/Custom:ro
     networks:
       - dokploy-network
     restart: always
@@ -71,9 +92,13 @@ services:
     image: espocrm/espocrm:latest
     container_name: espocrm-daemon
     volumes:
+      # Share same data with main container
       - ../files/espocrm-data:/var/www/html
-      - ../files/espocrm-custom:/var/www/html/custom
       - ../files/espocrm-uploads:/var/www/html/data/upload
+      
+      # Share branding overrides
+      - ./client/custom:/var/www/html/client/custom:ro
+      - ./custom/Espo/Custom:/var/www/html/custom/Espo/Custom:ro
     networks:
       - dokploy-network
     restart: always
@@ -90,8 +115,12 @@ services:
       ESPOCRM_CONFIG_WEB_SOCKET_ZERO_M_Q_SUBSCRIBER_DSN: "tcp://*:7777"
       ESPOCRM_CONFIG_WEB_SOCKET_ZERO_M_Q_SUBMISSION_DSN: "tcp://espocrm-websocket:7777"
     volumes:
+      # Share same data with main container
       - ../files/espocrm-data:/var/www/html
-      - ../files/espocrm-custom:/var/www/html/custom
+      
+      # Share branding overrides
+      - ./client/custom:/var/www/html/client/custom:ro
+      - ./custom/Espo/Custom:/var/www/html/custom/Espo/Custom:ro
     networks:
       - dokploy-network
     restart: always
