@@ -22,10 +22,9 @@ services:
       retries: 3
 
   espocrm:
-  build:
-    context: .
-    dockerfile: Dockerfile
-  
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: espocrm
     environment:
       ESPOCRM_DATABASE_PLATFORM: Mysql
