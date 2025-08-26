@@ -66,6 +66,9 @@ services:
       
       # Custom metadata and configurations
       - ./custom/Espo/Custom:/var/www/html/custom/Espo/Custom:ro
+      
+      # Custom templates override
+      - ./custom/Espo/Custom/Resources/templates:/var/www/html/custom/Espo/Custom/Resources/templates:ro
     networks:
       - dokploy-network
     restart: always
