@@ -3,7 +3,8 @@
     "custom/lib/custom-footer.js",
     "custom/lib/custom-branding.js",
     "custom/lib/remove-espocrm-links.js",
-    "custom/lib/hide-extensions.js"
+    "custom/lib/hide-extensions.js",
+    "custom/lib/login-background.js"
   ],
   "css": [
     "custom/res/css/custom.css"
