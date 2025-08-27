@@ -104,22 +104,22 @@ p.credit::after {
 
 /* Login Page Styling */
 body:has(#login) {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    background-size: cover;
-    background-attachment: fixed;
-    min-height: 100vh;
-}
-
-/* Alternative with image background - uncomment to use */
-/*
-body:has(#login) {
     background-image: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('/client/img/login-bg.jpg');
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        url('../../../img/login-bg.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+/* Alternative gradient background - uncomment to use */
+/*
+body:has(#login) {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-size: cover;
+    background-attachment: fixed;
     min-height: 100vh;
 }
 */

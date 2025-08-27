@@ -12,6 +12,7 @@ COPY html/main.html /var/www/html/html/main.html
 # Copiar diretórios customizados
 COPY client/custom/ /var/www/html/client/custom/
 COPY custom/ /var/www/html/custom/
+COPY client/img/ /var/www/html/client/img/
 
 # Garantir permissões corretas
 RUN chown -R www-data:www-data /var/www/html
